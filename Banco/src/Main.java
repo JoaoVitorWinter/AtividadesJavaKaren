@@ -1,7 +1,8 @@
-import java.util.Scanner;
+ import java.util.Scanner;
 import Entidades.Banco;
 import Entidades.Cliente;
 import Entidades.ContaPessoal;
+import java.util.InputMismatchException;
 
 public class Main {
 
@@ -12,6 +13,7 @@ public class Main {
 		Banco banco = new Banco();
 		Cliente cliente = new Cliente();
 		ContaPessoal conta = new ContaPessoal();
+		Boolean verificacao = false;
 
 		conta.saldo = 0;
 
@@ -25,6 +27,10 @@ public class Main {
 			System.out.println("Seja bem-vindo ao banco Lacto!");
 			System.out.println(
 					"Peço que nos passe suas informações pessoais, para que você possa ter uma conta no nosso banco.");
+			
+			do
+				
+			try {
 			System.out.print("Nome: ");
 			cliente.nome = sc.next();
 			System.out.print("Endereço: ");
@@ -39,6 +45,15 @@ public class Main {
 			conta.numero = sc.nextShort();
 			System.out.print("Número da agência: ");
 			conta.agencia = sc.nextShort();
+			
+			verificacao = true;
+			
+			} catch(InputMismatchException erro) {
+				System.err.println("\nColoque informações válidas!\n");
+				sc.nextLine();
+			}
+			
+			while(!verificacao);
 
 			while (banco.escolha != 5) {
 				banco.menu();
@@ -71,6 +86,11 @@ public class Main {
 			System.out.println("Welcome to Lacto Bank!");
 			System.out.println(
 					"I ask you to give us your personal information so that you can have an account with our bank.");
+			
+			do {
+				
+				try {
+					
 			System.out.print("Name: ");
 			cliente.nome = sc.next();
 			System.out.print("Address: ");
@@ -85,6 +105,14 @@ public class Main {
 			conta.numero = sc.nextShort();
 			System.out.print("Agency Number: ");
 			conta.agencia = sc.nextShort();
+			
+				verificacao = true;
+				
+				} catch(InputMismatchException erro) {
+					System.err.println("\nEnter valid information!\n");
+					sc.nextLine();
+				}
+			} while (!verificacao);
 
 			while (banco.escolha != 5) {
 				banco.menu();
@@ -117,6 +145,11 @@ public class Main {
 			System.out.println("Willkommen bei der Lacto Bank!");
 			System.out.println(
 					"Ich bitte Sie, uns Ihre persönlichen Daten mitzuteilen, damit Sie ein Konto bei unserer Bank eröffnen können.");
+			
+			do {
+				
+				try {
+					
 			System.out.print("Name: ");
 			cliente.nome = sc.next();
 			System.out.print("Adresse: ");
@@ -131,6 +164,14 @@ public class Main {
 			conta.numero = sc.nextShort();
 			System.out.print("Agenturnummer: ");
 			conta.agencia = sc.nextShort();
+
+			verificacao = true;
+			
+			} catch(InputMismatchException erro) {
+				System.err.println("\nGeben Sie gültige Informationen ein!\n");
+				sc.nextLine();
+			}
+		} while (!verificacao);
 
 			while (banco.escolha != 5) {
 				banco.menu();
